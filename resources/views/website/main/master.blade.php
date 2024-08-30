@@ -39,6 +39,8 @@
 
     <!-- Responsive css -->
     <link rel="stylesheet" href="/assets/website/css/responsive.css">
+
+    @yield('css')
 </head>
 
 
@@ -273,7 +275,7 @@
 
 {{--<!-- Bootstrap Bundle with Popper -->--}}
 {{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>--}}
-
+@yield('js')
 
 </body>
 
