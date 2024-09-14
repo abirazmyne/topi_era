@@ -4,23 +4,17 @@
 @section('page-title', 'Category')
 
 @section('meta-tags')
-{{--    <meta name="description" content="This is the category page description for SEO purposes.">--}}
-{{--    <meta name="keywords" content="ecommerce, category, products, buy, sell">--}}
-{{--    <meta property="og:title" content="Category Page">--}}
-{{--    <meta property="og:description" content="Explore our wide range of products in this category.">--}}
-{{--    <meta property="og:image" content="path/to/image.jpg">--}}
     <meta property="og:url" content="{{ url()->current() }}">
 @endsection
 
 @section('css')
-    <!-- third party css -->
-    <link href="/admin/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/libs/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/libs/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="/admin/assets/libs/mohithg-switchery/switchery.min.css" rel="stylesheet" type="text/css" />
 
-    <!-- SweetAlert2 CSS -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+
+<!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
     <!-- third party css end -->
@@ -104,32 +98,38 @@
                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium beatae explicabo facilis in minima minus necessitatibus quibusdam repellat!
                     </p>
 
-                    <table id="responsive-datatable" class="table table-bordered table-bordered dt-responsive nowrap">
-                        <thead>
-                        <tr>
-                            <th>SL.</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Status</th>
-                            <th>Image</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
+                    <div class=" mt-5">
+                        <table id="category-datatable" class="table table-bordered category-datatable">
+                            <thead>
+                            <tr>
+                                <th>SL.</th>
+                                <th>Name</th>
+                                <th>Slug</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
 
+                            <tbody>
+                            @foreach($categories as $category)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->slug }}</td>
+                                    <td>{{ $category->description }}</td>
+                                    <td>{{ $category->status }}</td>
+                                    <td><img src="{{ asset($category->category_logo) }}" alt="Category Image" style="max-width: 100px; height: auto;"></td>
+                                    <td>
+                                        <!-- Add action buttons here -->
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
 
-                        <tbody>
-                            <td>uashd</td>
-                            <td>uashd</td>
-                            <td>uashd</td>
-                            <td>
-                                <div class="switchery-demo">
-                                    <input type="checkbox" checked data-switchery="true" name="status" data-plugin="switchery" data-color="#039cfd"/>
-                                </div>
-                            </td>
-                            <td>uashd</td>
-                            <td>uashd</td>
-                        </tbody>
-                    </table>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -146,31 +146,17 @@
 @section('js')
     <script src="/admin/assets/libs/mohithg-switchery/switchery.min.js"></script>
 
-    <!-- third party js -->
-    <script src="/admin/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="/admin/assets/libs/datatables.net-select/js/dataTables.select.min.js"></script>
-    <script src="/admin/assets/libs/pdfmake/build/pdfmake.min.js"></script>
-    <script src="/admin/assets/libs/pdfmake/build/vfs_fonts.js"></script>
-    <!-- third party js ends -->
 
     <!-- Datatables init -->
     <script src="/admin/assets/js/pages/datatables.init.js"></script>
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
-
-
 
     <script>
         $(document).ready(function() {
@@ -210,6 +196,23 @@
                 });
             });
         });
+
+
+        {{--$(document).ready(function () {--}}
+
+        {{--    $(".category-datatable").DataTable({--}}
+        {{--        processing: true,--}}
+        {{--        serderSide: true,--}}
+        {{--        ajax: "{{route('categories.data.yajra')}}",--}}
+
+        {{--        columns : [--}}
+
+        {{--            {data: 'name' ,  name: 'name'},--}}
+        {{--            {data: 'description' ,  name: 'description'},--}}
+        {{--        ]--}}
+        {{--    });--}}
+
+        {{--})--}}
     </script>
 
 

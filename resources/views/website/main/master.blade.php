@@ -20,10 +20,12 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Your Page Title">
     <meta name="twitter:description" content="A description of your page for Twitter.">
-    <meta name="twitter:image" content="URL to an image that represents your page">
+    <meta name="twitter:image" content="">
 
-    <!-- Page Title -->
-    <title>Your SEO-Friendly Page Title</title>
+    @yield('meta-tags')
+
+<!-- Page Title -->
+    <title>@yield('title', 'Home')</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/assets/website/img/favicon.png" type="image/x-icon" />

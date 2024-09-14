@@ -657,7 +657,7 @@
                                     <div class="col-lg-12">
                                         <div class="ltn__product-item ltn__product-item-3 text-center">
                                             <div class="product-img">
-                                                <a href="product-details.html"><img src="/assets/website/img/product/11.png" alt="#"></a>
+                                                <a href="{{route('website.product.detail', ['id' => 1])}}"><img src="/assets/website/img/product/11.png" alt="#"></a>
                                                 <div class="product-badge">
                                                     <ul>
                                                         <li class="sale-badge">-19%</li>
@@ -693,7 +693,7 @@
                                                         <li class="review-total"> <a href="#"> (24)</a></li>
                                                     </ul>
                                                 </div>
-                                                <h2 class="product-title"><a href="product-details.html">Carrots Group Scal</a></h2>
+                                                <h2 class="product-title"><a href="">Carrots Group Scal</a></h2>
                                                 <div class="product-price">
                                                     <span>$32.00</span>
                                                     <del>$46.00</del>
